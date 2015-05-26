@@ -40,7 +40,7 @@
     }
     
     // set this class as delegate
-    physicsNode.collisionDelegate = self;
+    physicsnode.collisionDelegate = self;
     
     _obstacles = [NSMutableArray array];
     points = 0;
@@ -98,11 +98,11 @@
 - (void)addObstacle {
     Obstacle *obstacle = (Obstacle *)[CCBReader load:@"Obstacle"];
     CGPoint screenPosition = [self convertToWorldSpace:ccp(380, 0)];
-    CGPoint worldPosition = [physicsNode convertToNodeSpace:screenPosition];
+    CGPoint worldPosition = [physicsnode convertToNodeSpace:screenPosition];
     obstacle.position = worldPosition;
     [obstacle setupRandomPosition];
     obstacle.zOrder = DrawingOrderPipes;
-    [physicsNode addChild:obstacle];
+    [physicsnode addChild:obstacle];
     [_obstacles addObject:obstacle];
 }
 
@@ -129,12 +129,12 @@
         [character.physicsBody applyAngularImpulse:-40000.f*delta];
     }
     
-    physicsNode.position = ccp(physicsNode.position.x - (character.physicsBody.velocity.x * delta), physicsNode.position.y);
+    physicsnode.position = ccp(physicsnode.position.x - (character.physicsBody.velocity.x * delta), physicsnode.position.y);
     
     // loop the ground
     for (CCNode *ground in _grounds) {
         // get the world position of the ground
-        CGPoint groundWorldPosition = [physicsNode convertToWorldSpace:ground.position];
+        CGPoint groundWorldPosition = [physicsnode convertToWorldSpace:ground.position];
         // get the screen position of the ground
         CGPoint groundScreenPosition = [self convertToNodeSpace:groundWorldPosition];
         
@@ -147,7 +147,7 @@
     NSMutableArray *offScreenObstacles = nil;
     
     for (CCNode *obstacle in _obstacles) {
-        CGPoint obstacleWorldPosition = [physicsNode convertToWorldSpace:obstacle.position];
+        CGPoint obstacleWorldPosition = [physicsnode convertToWorldSpace:obstacle.position];
         CGPoint obstacleScreenPosition = [self convertToNodeSpace:obstacleWorldPosition];
         if (obstacleScreenPosition.x < -obstacle.contentSize.width) {
             if (!offScreenObstacles) {
