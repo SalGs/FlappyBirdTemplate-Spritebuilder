@@ -23,7 +23,7 @@ typedef NS_ENUM(NSInteger, DrawingOrder) {
 }
 
 -(void) initialize;
--(void) addObstacle;
+-(void) addObstacle; [self addObstacle];
 -(void) showScore;
 
 @end
