@@ -20,8 +20,8 @@
 
 - (void)touchCancelled:(CCTouch *)touch withEvent:(CCTouchEvent *)event
 // this will get called every time the player touches the screen
-[Character flap];
 
 }
 
+[Character flap];
 @end
